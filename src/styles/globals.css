@@ -1,0 +1,28 @@
+.authorsCard {
+  padding: 10px 30px;
+  overflow: scroll;
+  height: 700px;
+  background-color: #cccccc5a
+}
+.authorCard {
+  margin: 20px;
+  padding: 16px;
+  border: 1px solid #ccc;
+  box-shadow: 2px 2px 6px 0px rgba(0, 0, 0, 0.3);
+}
+.authorCard:hover{
+  background-color: aliceblue;
+}
+.eachQuote{
+  padding: 16px;
+  margin: 10px;
+  border: 1px solid grey;
+}
+.loginLayout{
+  border: 1px solid grey;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #ccc;
+  padding: 10px;
+}
