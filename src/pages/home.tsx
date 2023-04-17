@@ -1,5 +1,4 @@
-import LoginLayout from "@/Layouts/loginLayout";
-import { activeAuthor } from "@/atoms/ activeAuthor";
+import { activeAuthor } from "../atoms/ activeAuthor";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import { useRecoilValue, useSetRecoilState } from "recoil";
@@ -7,10 +6,9 @@ import { useRecoilValue, useSetRecoilState } from "recoil";
 export default function Home() {
   const [author, setAuthor] = useState<any>();
   console.log("author", author);
-  const active_author = useRecoilValue(activeAuthor);
   const setActiveAuthor = useSetRecoilState(activeAuthor);
   const router = useRouter();
-
+  
   useEffect(() => {
     fetch("https://api.quotable.io/authors")
       .then((response) => response.json())
@@ -23,7 +21,7 @@ export default function Home() {
   };
   return (
     <>
-      <div className="authorsCard">
+      <div className="authorsCards">
         {author &&
           author.results &&
           author.results.map((eachAuthor: any, index: number) => {

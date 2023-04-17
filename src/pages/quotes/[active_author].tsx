@@ -1,5 +1,5 @@
-import LoginLayout from "@/Layouts/loginLayout";
-import { activeAuthor } from "@/atoms/ activeAuthor";
+import LoginLayout from "../../Layouts/loginLayout";
+import { activeAuthor } from "../../atoms/ activeAuthor";
 import { useEffect, useState } from "react";
 import { useRecoilValue } from "recoil";
 export default function Quotes() {
