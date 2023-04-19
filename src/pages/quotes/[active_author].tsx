@@ -7,7 +7,8 @@ export default function Quotes({ person }: any) {
 
   return (
     <div>
-      {active_author}
+      <h3>{active_author}</h3>
+      <div style={{border:'1px solid red',height:'90vh',overflow:'scroll'}}>
       {person &&
         person.results.map((eachQuote: any, index: number) => {
           return (
@@ -16,6 +17,8 @@ export default function Quotes({ person }: any) {
             </div>
           );
         })}
+      </div>
+      
     </div>
   );
 }
