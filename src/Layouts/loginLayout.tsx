@@ -1,30 +1,45 @@
 import { useRouter } from "next/router";
-import { useEffect, useState } from "react";
-
+import cookie from "js-cookie";
+import { use, useEffect, useState } from "react";
 export default function LoginLayout({ children }: any) {
-  const [isAuth, setIsAuth] = useState<string | null>("");
+  //   const [isAuth, setIsAuth] = useState<string | null>("");
+  const [cke, setCke] = useState(true);
+  const [layout, setLayout] = useState(false);
   const router = useRouter();
   const handleLogout = () => {
-    localStorage.removeItem("username");
-    router.push("/");
+    // localStorage.removeItem("token");
+    cookie.remove("token");
+    router.push("/login");
+    setCke(true);
+    setLayout(true);
+    // router.reload()
   };
-  useEffect(() => {
-    if (router.pathname != "/login" || router.pathname === "/login") {
-      router.push("/home");
-    }
-  }, []);
 
   useEffect(() => {
-    const auth = localStorage.getItem("username");
-    setIsAuth(auth);
+    cookie.get("token");
+  }, []);
+  useEffect(() => {
+    if (cookie.get("token")) {
+      setCke(false);
+    }
   });
+  const handleProfile = () => {
+    router.push("/profile");
+  };
 
   return (
     <div>
-      {isAuth && (
+      {cke ? (
+        <div></div>
+      ) : (
         <div className="loginLayout">
           <h3>Quotes</h3>
-          <button onClick={handleLogout}>logout</button>
+          <div style={{ display: "flex", gap: "8px" }}>
+            <button onClick={handleProfile}>Profile</button>
+            <button onClick={handleLogout} disabled={cke ? true : false}>
+              logout
+            </button>
+          </div>
         </div>
       )}
 

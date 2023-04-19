@@ -1,34 +1,44 @@
 import { useRouter } from "next/router";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import LoginLayout from "../Layouts/loginLayout";
+import Cookie from "js-cookie";
+// interface LogiDetails {
+//   username: string;
+//   password: string;
+// }
 
-interface LogiDetails {
+type Username = {
   username: string;
+};
+type Password = {
   password: string;
-}
+};
+
+type LoginDetails = Username & Password;
 
 export default function Login() {
-  //   const [username, setusername] = useState<string>("");
-  //   const [password, setPasswrod] = useState<string>("");
-  const [formData, setFormData] = useState<LogiDetails>({
+  const [formData, setFormData] = useState<LoginDetails>({
     username: "",
     password: "",
   });
-  //   console.log(password);
+  console.log("token", formData.username);
   const router = useRouter();
 
   const handleUsername = (e: any) => {
-    // setusername(e.target.value);
     setFormData({ username: e.target.value, password: "" });
   };
   const handlePassword = (e: any) => {
-    // setPasswrod(e.target.value);
     setFormData({ username: formData.username, password: e.target.value });
   };
   const handleSubmit = () => {
-    // localStorage.setItem("username", username);
-    localStorage.setItem("username", formData.username);
-    router.push("/home");
+    // localStorage.setItem("token", formData.username);
+    // localStorage.setItem("token", "123");
+    Cookie.set("token", "1234");
+
+    router.push("/random-quote-gen");
+    // router.reload()
   };
+
   return (
     <div
       style={{
@@ -36,22 +46,43 @@ export default function Login() {
         flexDirection: "column",
         justifyContent: "center",
         alignItems: "center",
+        height: "97vh",
+        border: "1px solid grey",
       }}
     >
-      <input
-        // value={username}
-        value={formData.username}
-        placeholder="username"
-        onChange={handleUsername}
-      />
-      <input
-        // value={password}
-        value={formData.password}
-        placeholder="password"
-        type="password"
-        onChange={handlePassword}
-      />
-      <button onClick={handleSubmit}>submit</button>
+      <h3>login form</h3>
+      <div
+        style={{
+          display: "flex",
+          flexDirection: "column",
+          justifyContent: "center",
+          alignItems: "center",
+          height: "50%",
+          width: "30%",
+          border: "1px solid grey",
+          rowGap: "15px",
+        }}
+      >
+        <div>
+          <label>username: </label>
+          <input
+            value={formData.username}
+            placeholder="username"
+            onChange={handleUsername}
+          />
+        </div>
+        <div>
+          <label>password: </label>
+          <input
+            value={formData.password}
+            placeholder="password"
+            type="password"
+            onChange={handlePassword}
+          />
+        </div>
+
+        <button onClick={handleSubmit}>submit</button>
+      </div>
     </div>
   );
 }
