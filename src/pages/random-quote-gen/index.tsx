@@ -60,7 +60,7 @@ export default function RandomQuoteGen({data}:any) {
 }
 
 export const getStaticProps: GetStaticProps = async () => {
-  const res = await fetch("https://api.quotable.io/quotes/random");
+  const res = await fetch("https://api.quotable.io/quotes/random"); 
   const data = await res.json();
   return {
     props: {

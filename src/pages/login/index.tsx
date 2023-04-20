@@ -1,6 +1,6 @@
 import { useRouter } from "next/router";
-import { useEffect, useState } from "react";
-import LoginLayout from "../Layouts/loginLayout";
+import { useState } from "react";
+import { Button } from "../../stories/Button";
 import Cookie from "js-cookie";
 // interface LogiDetails {
 //   username: string;
@@ -80,8 +80,8 @@ export default function Login() {
             onChange={handlePassword}
           />
         </div>
-
-        <button onClick={handleSubmit}>submit</button>
+        <Button onClick={handleSubmit} label='submit' size='large'/> 
+        
       </div>
     </div>
   );

@@ -1,6 +1,6 @@
 import "@/styles/globals.css";
 import type { AppProps } from "next/app";
-
+// import '../styles/global.css';
 import { RecoilRoot } from "recoil";
 import LoginLayout from "../Layouts/loginLayout";
 
