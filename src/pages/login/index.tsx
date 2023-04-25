@@ -1,7 +1,12 @@
+import React from "react";
 import { useRouter } from "next/router";
 import { useState } from "react";
-import { Button } from "../../stories/Button";
 import Cookie from "js-cookie";
+import { Button } from "../../components/atoms/button/Button";
+import { Primary } from "../../components/atoms/button/Button.stories";
+import btnStyles from '../../components/atoms/button/button.module.css';
+import Input from "../../components/atoms/input/input";
+import inputStyles from '../../components/atoms/input/input.module.css';
 // interface LogiDetails {
 //   username: string;
 //   password: string;
@@ -64,24 +69,27 @@ export default function Login() {
         }}
       >
         <div>
-          <label>username: </label>
-          <input
+          {/* <label>username: </label> */}
+          {/* <input
             value={formData.username}
             placeholder="username"
             onChange={handleUsername}
-          />
+          /> */}
+          <Input variant={`${inputStyles["input"]}`} placeholder="username"  value={formData.username} onChange={handleUsername}/>
         </div>
         <div>
-          <label>password: </label>
-          <input
+          {/* <label>password: </label> */}
+          {/* <input
             value={formData.password}
             placeholder="password"
             type="password"
             onChange={handlePassword}
-          />
+          /> */}
+            <Input variant={`${inputStyles["input"]}`} placeholder="password"  value={formData.password} onChange={handlePassword}/>
         </div>
-        <Button onClick={handleSubmit} label='submit' size='large'/> 
-        
+        <Button variant={`${btnStyles["primary-button"]}`} onClick={handleSubmit}>
+          submit
+        </Button>
       </div>
     </div>
   );

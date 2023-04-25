@@ -1,10 +1,11 @@
 import { useRouter } from "next/router";
 import { GetStaticProps } from "next";
-
-export default function RandomQuoteGen({data}:any) {
+import { Button } from "../../components/atoms/button/Button";
+import btnStyles from "../../components/atoms/button/button.module.css";
+export default function RandomQuoteGen({ data }: any) {
   const router = useRouter();
   const handleClick_to_nav_to_home = () => {
-    router.push("/home");    
+    router.push("/home");
   };
 
   return (
@@ -19,7 +20,7 @@ export default function RandomQuoteGen({data}:any) {
         }}
       >
         {data &&
-          data.map((eachRandomQuote:any, index:number) => {
+          data.map((eachRandomQuote: any, index: number) => {
             return (
               <div
                 key={index}
@@ -44,12 +45,18 @@ export default function RandomQuoteGen({data}:any) {
                       {eachRandomQuote.author}
                     </span>
                   </h2>
-                  <button
+                  {/* <button
                     style={{ alignItems: "end" }}
                     onClick={handleClick_to_nav_to_home}
                   >
                     home
-                  </button>
+                  </button> */}
+                  <Button
+                    variant={`${btnStyles["primary-button"]}`}
+                    onClick={handleClick_to_nav_to_home}
+                  >
+                    submit
+                  </Button>
                 </div>
               </div>
             );
@@ -60,7 +67,7 @@ export default function RandomQuoteGen({data}:any) {
 }
 
 export const getStaticProps: GetStaticProps = async () => {
-  const res = await fetch("https://api.quotable.io/quotes/random"); 
+  const res = await fetch("https://api.quotable.io/quotes/random");
   const data = await res.json();
   return {
     props: {
@@ -68,15 +75,6 @@ export const getStaticProps: GetStaticProps = async () => {
     },
   };
 };
-
-
-
-
-
-
-
-
-
 
 // data fetching using useEffect and fetch
 
@@ -94,7 +92,7 @@ export const getStaticProps: GetStaticProps = async () => {
 
 //   const handleClick_to_nav_to_home = () => {
 //     router.push("/home");
-    
+
 //   };
 
 //   return (

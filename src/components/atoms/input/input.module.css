@@ -1,0 +1,11 @@
+.input{
+    font-size: 14px;
+}
+.input:hover{
+    border-color: red;
+    background-color: #000;
+}
+.input:focus{
+    background-color: red;
+}
+

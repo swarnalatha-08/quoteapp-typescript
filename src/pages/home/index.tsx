@@ -76,6 +76,7 @@ import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import {  useSetRecoilState } from "recoil";
 import useFetch from "../../customhooks/useFetch";
+// import Button from "../../components/atoms/button/Button";
 export default function Home() {
   const { data } = useFetch("https://api.quotable.io/authors");
   const [author, setAuthor] = useState<any>();
@@ -116,6 +117,12 @@ export default function Home() {
         <button onClick={handleMyQuotes} style={{ padding: "10px 20px" }}>
           my quotes
         </button>
+
+        {/* <Button onClick={handleRandomQuote}>New Quote</Button> */}
+        {/* <Button onClick={handleAllQuotes}>all quotes</Button> */}
+        {/* <Button onClick={handleMyQuotes}>my quotes</Button> */}
+
+
       </div>
 
       <div className="authorsCards">
