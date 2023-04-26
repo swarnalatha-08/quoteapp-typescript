@@ -4,13 +4,10 @@ import { useState } from "react";
 import Cookie from "js-cookie";
 import { Button } from "../../components/atoms/button/Button";
 import { Primary } from "../../components/atoms/button/Button.stories";
-import btnStyles from '../../components/atoms/button/button.module.css';
+import btnStyles from "../../components/atoms/button/button.module.css";
 import Input from "../../components/atoms/input/input";
-import inputStyles from '../../components/atoms/input/input.module.css';
-// interface LogiDetails {
-//   username: string;
-//   password: string;
-// }
+import inputStyles from "../../components/atoms/input/input.module.css";
+import { motion } from "framer-motion";
 
 type Username = {
   username: string;
@@ -36,12 +33,20 @@ export default function Login() {
     setFormData({ username: formData.username, password: e.target.value });
   };
   const handleSubmit = () => {
-    // localStorage.setItem("token", formData.username);
-    // localStorage.setItem("token", "123");
     Cookie.set("token", "1234");
-
     router.push("/random-quote-gen");
-    // router.reload()
+  };
+
+  const buttonVariants = {
+    hover: {
+      scale: 1.5,
+      transition: {
+        duration: 0.3,
+        type: "spring",
+        stiffness: 200,
+        damping: 10,
+      },
+    },
   };
 
   return (
@@ -69,27 +74,29 @@ export default function Login() {
         }}
       >
         <div>
-          {/* <label>username: </label> */}
-          {/* <input
-            value={formData.username}
+          <Input
+            variant={`${inputStyles["input"]}`}
             placeholder="username"
+            value={formData.username}
             onChange={handleUsername}
-          /> */}
-          <Input variant={`${inputStyles["input"]}`} placeholder="username"  value={formData.username} onChange={handleUsername}/>
+          />
         </div>
         <div>
-          {/* <label>password: </label> */}
-          {/* <input
-            value={formData.password}
+          <Input
+            variant={`${inputStyles["input"]}`}
             placeholder="password"
-            type="password"
+            value={formData.password}
             onChange={handlePassword}
-          /> */}
-            <Input variant={`${inputStyles["input"]}`} placeholder="password"  value={formData.password} onChange={handlePassword}/>
+          />
         </div>
-        <Button variant={`${btnStyles["primary-button"]}`} onClick={handleSubmit}>
-          submit
-        </Button>
+        <motion.div whileHover={buttonVariants["hover"]}>
+          <Button
+            // variant={`${btnStyles["primary"]}`} // customprops in storybook
+            onClick={handleSubmit}
+          >
+            submit
+          </Button>
+        </motion.div>
       </div>
     </div>
   );

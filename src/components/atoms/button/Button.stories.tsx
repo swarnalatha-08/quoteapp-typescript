@@ -14,9 +14,8 @@ type Story = StoryObj<typeof Button>;
 
 export const Primary: Story = {
   args: {
-    label:'Button',
+    ...Button.defaultProps,
     children: 'primary btn',
-    variant:buttonStyles["primary-button"]
   },
 };
 

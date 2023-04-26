@@ -4,8 +4,10 @@
 .input:hover{
     border-color: red;
     background-color: #000;
+    color: #fff;
 }
 .input:focus{
     background-color: red;
+
 }
 
